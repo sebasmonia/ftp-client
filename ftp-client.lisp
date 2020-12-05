@@ -11,24 +11,21 @@
 
 (defun start-ui ()
   (with-nodgui ()
-    (let ((button-connect (make-instance 'button
-                                         :text    "combo"
-                                         :command #'connect-to-server))
-          (text-address (make-instance 'entry)))
-      (grid text-address 0 1  :sticky :nswe)
-      (grid button-connect 1 1  :sticky :nswe))))
+    (let* ((connect-button (make-instance 'button
+                                          :text    "Connect to server"
+                                          :command #'connect-to-server))
+           (address-entry (make-instance 'entry))
+           (address-label (make-instance 'label
+                                         :text "FTP address:"))
+           )
+      (grid address-label 0 0)
+      (grid address-entry 0 1)
+      (grid connect-button 1 1)
+      (grid-columnconfigure *tk* :all :weight 1)
+      (grid-rowconfigure    *tk* :all :weight 1))))
+      )))
 
 (defun connect-to-server ()
-  (format *trace-output* "hehehe"))
+  (format *trace-output* "Called connect-to-server"))
 
 ;; (nodgui:with-nodgui () (nodgui:message-box (format nil "meh") "info" :ok "info"))
-
-;; (uiop:getenv "HOME")
-;; (uiop:run-program (list "firefox" "http:url")) - sync
-;; (uiop:run-program "ls" :output *standard-output*) - print output
-;; (uiop:run-program "ls" :output :string) - return as str
-;; uiop:launch-program for async calls, see https://lispcookbook.github.io/cl-cookbook/os.html#asynchronously
-
-
-;; set operations, over lists: intersection set-difference union set-exclusive-or
-;; https://lispcookbook.github.io/cl-cookbook/data-structures.html#set
