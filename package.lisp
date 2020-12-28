@@ -2,8 +2,7 @@
 
 (defpackage #:ftp-client
   (:nicknames :ftpc)
-  ;; (:use #:common-lisp #:uiop)
-  (:use #:common-lisp #:uiop #:nodgui)
+  (:use #:common-lisp #:nodgui)
   (:import-from :alexandria)
   (:import-from :uiop)
   ;; (:import-from :nodgui)
